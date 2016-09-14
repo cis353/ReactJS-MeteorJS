@@ -1,9 +1,5 @@
-import {
-  UserText
-}
-from '../imports/api/userText.js';
+import { Meteor } from 'meteor/meteor';
+import { UserText } from '../imports/api/userText.js';
 
-
-Meteor.publish("userTextPublish", function() {
-  return UserText.find();
-});
+// publishes all user text
+Meteor.publish('userTextPublish', () => UserText.find());
