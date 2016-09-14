@@ -8,6 +8,11 @@ import {
 }
 from '../imports/api/users.js';
 
+import {
+  UserText
+}
+from '../imports/api/userText.js';
+
 Meteor.startup(() => {
   // code to run on server at startup
 });
@@ -32,6 +37,13 @@ Meteor.methods({
     });
     console.log(userInsert);
     return userInsert;
+  },
+
+  saveText: function(text) {
+    let userTextInsert = UserText.insert({
+      text, createdAt: new Date()
+    });
+    return userTextInsert;
   }
 
 });

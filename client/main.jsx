@@ -1,14 +1,17 @@
 import React from 'react';
+
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory,IndexRoute } from 'react-router';
-import NavbarHeader from '../imports/ui/includes/navbar.jsx';
-import RegistrationForm from '../imports/ui/registration.jsx';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
+import NavbarHeader from '../imports/ui/includes/navbar.jsx';
+import RegistrationForm from '../imports/ui/pages/registration.jsx';
+import LoginForm from '../imports/ui/pages/login.jsx';
+import HomePage from '../imports/ui/pages/home.jsx';
 
 
 // import MyRoutes from 'imports/ui/includes/route.jsx';
-import LoginForm from '../imports/ui/login.jsx';
+
 class MyRoutes extends React.Component{
   render(){
     return (
@@ -24,9 +27,10 @@ class MyRoutes extends React.Component{
 Meteor.startup(() => {
   render(<Router history = {browserHistory}>
       <Route path = "/" component = {MyRoutes}>
-         <IndexRoute component = {NavbarHeader} />
+         <IndexRoute component = {LoginForm} />
          <Route path = "login" component = {LoginForm} />
          <Route path = "registration" component = {RegistrationForm} />
+         <Route path = "home" component = {HomePage} />
       </Route>
    </Router>, document.getElementById('loginApp'));
 }); 
